@@ -19,6 +19,19 @@ class Matriz{
 		}
 	}
 
+	Matriz(int ordem){
+		this.setNumLinhas(ordem);
+		this.setNumColunas(ordem);
+		this.mat = new int[ordem][ordem];
+
+		int conti, contj;
+		for(conti=0;conti<this.getNumLinhas();conti++){
+			for(contj=0;contj<this.getNumColunas();contj++){
+				this.setElemento(conti,contj,0);
+			}
+		}
+	}
+
 	//METODO QUE RETORNA O NUMERO DE LINHAS DA MATRIZ
 	public int getNumLinhas(){
 		return this.numLinhas;
@@ -59,6 +72,41 @@ class Matriz{
 				this.setElemento(conti,contj,gerador.nextInt(10));
 			}
 		}
+	}
+
+	public void iniciaRandom(int limite){
+		Random gerador = new Random();
+		int conti, contj;
+
+		for(conti=0;conti<this.getNumLinhas();conti++){
+			for(contj=0;contj<this.getNumColunas();contj++){
+				this.setElemento(conti,contj,gerador.nextInt(limite));
+			}
+		}	
+	}
+
+	public void inicializaCom(int num){
+		int conti, contj;
+
+		for(conti=0;conti<this.getNumLinhas();conti++){
+			for(contj=0;contj<this.getNumColunas();contj++){
+				this.setElemento(conti,contj,num);
+			}
+		}
+	}
+
+	public void copiaMatriz(Matriz mat){
+		int conti, contj;
+
+		for(conti=0;conti<this.getNumLinhas();conti++){
+			for(contj=0;contj<this.getNumColunas();contj++){
+				this.setElemento(conti,contj,mat.getElemento(conti,contj));
+			}
+		}
+	}
+
+	public void iniciaPelaMatriz(Matriz mat){
+		this.copiaMatriz(mat);
 	}
 
 	//METODO QUE IMPRIME OS ELEMENTOS DA MATRIZ
